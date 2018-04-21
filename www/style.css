@@ -1,0 +1,41 @@
+body{
+	margin: 0 auto;
+	background-image: url("./image.jpeg");
+	background-size: 100% 720px;
+	background-repeat: no-repeat;
+}
+
+.container{
+	width: 700px;
+	height: 140px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: rgba(52, 73, 94, 0.7);
+	margin-top: 20%;
+	border-radius: 4px;
+}
+.box {
+
+    padding: 0.2em 7em;
+    margin: 0 auto; 
+}
+
+
+input[type=text] {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px;
+    margin: 8px 2px;
+    margin-top: 5%;
+    box-sizing: border-box;
+    border-radius: 2px;
+
+
+}
+
+button {
+	margin-left: 90% !important;
+}
+.fa {
+	font-size: 20px !important;
+}
