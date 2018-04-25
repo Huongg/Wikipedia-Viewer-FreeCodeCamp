@@ -1,13 +1,12 @@
 body{
 	margin: 0 auto;
 	background-image: url("./image.jpeg");
-	background-size: 100% 720px;
+	background-size: 100%;
 	background-repeat: no-repeat;
 }
 
-.container{
-	width: 700px;
-	height: 140px;
+.row {
+	height: 10em;
 	text-align: center;
 	margin: 0 auto;
 	background-color: rgba(52, 73, 94, 0.7);
@@ -16,8 +15,8 @@ body{
 }
 .box {
 
-    padding: 0.2em 7em;
-    margin: 0 auto; 
+    padding-left: 40%;
+    margin-right: -20%;
 }
 
 
