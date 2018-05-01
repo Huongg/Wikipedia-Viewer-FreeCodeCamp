@@ -6,6 +6,7 @@
 
  	<!-- Bootstrap - Mobile first -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 		<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -16,8 +17,11 @@
 	
 	<!-- Link JavasScript -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
-	<script type="text/javascript" src="script.js"
-	s></script>
+	<script type="text/javascript" src="script.js"></script>
+
+	<!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
 
     
 	<title>Wikipedia Viewer</title>
@@ -29,14 +33,17 @@
   <body>
   	<div class="container" >
   		<div class ="row">
-  			<div class="col-md-8">
+  			<div class="col-md-8 col-md-offset-2  text-center">
 				  	<form class="box">
 				      <input  class="search-box" type="text" placeholder="Search.." name="search">
-				      <button class="search-icon" type="button"><i class="fa fa-search"></i></button>
+				      <button class="search-icon btn btn-default" type="button"><i class="fa fa-search"></i></button>
 				    </form>
-				    <div id="searches"></div>
-				    <div id="contents"></div>
   			</div>
+
+  			<div class="col-md-6 col-md-offset-3 ">
+  				<div id="searches"> </div>
+			</div>
+  			
   		</div>
   	</div>
 

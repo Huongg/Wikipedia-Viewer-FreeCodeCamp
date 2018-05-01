@@ -18,27 +18,27 @@ $(document).ready(function(){
 	$(".search-icon").click(function(){
 		let userInput = $(".search-box").val();
 		doWiki(userInput);
-		console.log(userInput);
-
 	});
 
+	
 	$(".search-box").on('keypress',function(event){
-    	if (event.which === 13){
-
+    	if (event.which == 13){
     		let userInput = $(".search-box").val();
-    		doWiki(userInput);
+			doWiki(userInput);
 
-    		event.preventDefault(); 
-    		return false; 
-
+			// event.preventDefault();
+			return false;
     	}
 
     });
+
 });
 
 
 
 function doWiki(userInput) {
+    console.log("Starting doWiki");
+
     let url = GET_OPEN_SEARCH + userInput;
     url += "&origin=*";
     url += "&format=json";
@@ -49,46 +49,97 @@ function doWiki(userInput) {
 	catch(err) {
 	    console.log(err);
 	}
-	// console.log("Finieshed");
 
-	    
+	// Do something else really slow and long
+	console.log("Finished doWiki");
 }
 
-function handleSearch(data) {
+function getUrlAndTitle(data){
+	let html ="";
 
-	    let respData = JSON.stringify(data[1]);
-	    let introOnly = true;
-	    console.log(respData);
-	    $("#searches").text(respData);
-
-	    let chosenArticle = data[1][0]; //Just take the first one
-	    chosenArticle = chosenArticle.replace(/\s+/g, "_");
-
-	    let url = GET_CONTENT_V3 + chosenArticle;
-	    url += "&origin=*";
-	    url += "&format=json" ;
-
-	    if (introOnly === true){
-	        url += "&exintro=1";
-	    }
+	//Instead of doing a forEach loop, use a normal for loop and get both data at
+	// data[1] and data[3]
 
 
-	    $.getJSON(url, handleContents);
+	let numEntries = data[1].length;
+	console.log(numEntries);
+	for (i=0; i< numEntries; i++){
+		let title = data[1][i];
+		let description = data[2][i];
+		let url = data[3][i];
+
+		html += `
+		<div id='result' class='results'>
+			<a href = "${url}"" > <h3>${title}</h3> </a>
+			<p> ${description} </p>
+		</div>
+		`	
 	}
+	
+	return html;
+
+}
+
+
+
+function handleSearch(jsonResponse){
+	console.log("Starting handleSearch");
+
+	let html ="";
+	
+	html += getUrlAndTitle(jsonResponse);
+
+	$("#searches").html(html);
+	console.log("Finished handleSearch");
+}
+	
+
+// $('#display-result').append(
+//             "<a href='" + resp.fullurl + "' target= '_blank'><div id='result' class='results'><h3>" + resp.title + "</h3><p = class='extract'>" + resp.extract + "</p></div>");
+
+		// let respData = JSON.stringify(data[1]);
+	 //    let introOnly = true;
+	 //    console.log(respData);
+	    // $("#searches").text(respData);
+
+	    // let chosenArticle = data[1][0]; //Just take the first one
+	    // chosenArticle = chosenArticle.replace(/\s+/g, "_");
+
+	    // let url = GET_CONTENT_V3 + chosenArticle;
+	    // url += "&origin=*";
+	    // url += "&format=json" ;
+
+	    // if (introOnly === true){
+	    //     url += "&exintro=1";
+	    // }
+
+
+	    // $.getJSON(url, handleContents);
+
+
+
+
 
 function handleContents(data){
 
-    let respData = JSON.stringify(data);
+    //let respData = JSON.stringify(data);
     
 
-    let pageId = Object.keys(data.query.pages)[0];
+    // let pageId = Object.keys(data.query.pages)[0];
 
     // let pageContent = data.query.pages[pageId].revisions[0].content; // Works with GET_CONTENT_V1
     // let pageContent = data.query.pages[pageId].revisions[0]["*"];    // Works with GET_CONTENT_V2
-    let pageContent = data.query.pages[pageId].extract;                 // Works with GET_CONTENT_V3
-    console.log(respData);
+    // let pageContent = data.query.pages[pageId].extract;                 // Works with GET_CONTENT_V3
+    // console.log(respData);
     // $("#contents").text(JSON.stringify(pageContent));
-    $("#contents").html(JSON.stringify(pageContent));
+    let htmlContents= "";
+
+	data[2].forEach(content =>{
+			htmlContents += data;
+
+	});
+
+    $("#contents").html(htmlContents);
 
 }
 

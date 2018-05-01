@@ -3,20 +3,16 @@ body{
 	background-image: url("./image.jpeg");
 	background-size: 100%;
 	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 100%;
 }
-
+	
 .row {
 	height: 10em;
 	text-align: center;
-	margin: 0 auto;
 	background-color: rgba(52, 73, 94, 0.7);
-	margin-top: 20%;
+	margin-top: 10%;
 	border-radius: 4px;
-}
-.box {
-
-    padding-left: 40%;
-    margin-right: -20%;
 }
 
 
@@ -38,3 +34,33 @@ button {
 .fa {
 	font-size: 20px !important;
 }
+
+.results {
+	font-size: 1.3rem;
+	max-width: 800px;
+	background: #fff;
+	border: .5px solid #ccc;
+	box-shadow: 0 0 0 .1em #ccc;
+	border-radius: .1em;
+	padding: 1rem;
+	margin: .2rem;
+}
+
+#searches {
+	margin-top: 1.5em !important;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
